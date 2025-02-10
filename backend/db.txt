@@ -1,0 +1,13 @@
+job - 
+    job_id: int
+    title: 
+    desc:
+    location
+    salary
+
+applicant- 
+    applicant_name
+    email
+    resume
+    job_id
+
