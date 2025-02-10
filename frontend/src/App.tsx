@@ -14,11 +14,30 @@ interface jobs{
 
 function App() {
   const [jobs, setJobs]= useState<jobs>()
-  useEffect
+  useEffect(() => {
+    const fetchJobs = async()=>{
+      try {
+        const data= await fetch('http://localhost:3000/api/jobs')
+        const res= await data.json();
+        console.log(res);
+        setJobs(res[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchJobs();
+  }, [])
+  
 
   return (
     <>
      <h1>Welcome to Job Portal</h1>
+     {/* {jobs.forEach(job => {
+      {job.title}
+      {job.description}
+      {job.location}
+      {job.salary}
+     });} */}
 
     </>
   )
