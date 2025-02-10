@@ -1,18 +1,18 @@
 import { Request, Response } from "express"
 import { sequelize } from "../db/model"
 
-interface applicant{
+interface job{
     id?: number,
-    name: string,
-    email: string,
-    resume: string,
-    job_id: number
+    title: string,
+    description: string,
+    location: string,
+    salary: string
 }
 
-export const createApplicant = (req: Request, res: Response) => {
+export const createJob = (req: Request, res: Response) => {
     try {
-        const appl : applicant = req.body()
-        sequelize.query(`INSERT INTO applicant (applicant_name, email, resume, job_id) VALUES(${appl.name} || '' , ${appl.email} || '', ${appl.resume} || '', ${appl.job_id}) `).then((result: any)=>{
+        const jobs : job = req.body()
+        sequelize.query(`INSERT INTO job (title, description, location, salary) VALUES(${jobs.title} || '' , ${jobs.description} || '', ${jobs.location} || '', ${jobs.salary}) `).then((result: any)=>{
             res.status(200).json({msg: "Created!"})
         }
         )
@@ -22,9 +22,9 @@ export const createApplicant = (req: Request, res: Response) => {
     }
 }
 
-export const getApplicants = (req: Request, res: Response) => {
+export const getJobs = (req: Request, res: Response) => {
     try {
-        sequelize.query(`SELECT * FROM applicant`).then((results: any) => {
+        sequelize.query(`SELECT * FROM job`).then((results: any) => {
             res.status(201).json({data: results});
         })
     } catch (error) {
@@ -33,10 +33,10 @@ export const getApplicants = (req: Request, res: Response) => {
     }
 }
 
-export const getApplicant = (req: Request, res: Response) => {
+export const getJob = (req: Request, res: Response) => {
     try {
         const id = req.params;
-        sequelize.query(`SELECT * FROM applicant WHERE id=${id}`).then((results: any) => {
+        sequelize.query(`SELECT * FROM job WHERE id=${id}`).then((results: any) => {
             res.status(201).json({data: results});
         })
     } catch (error) {
@@ -47,7 +47,7 @@ export const getApplicant = (req: Request, res: Response) => {
 
 
 
-export const deleteApplicant = (req: Request, res: Response) => {
+export const deleteJob = (req: Request, res: Response) => {
     try {
         const id = req.body();
         sequelize.query(`DELETE FROM applicant WHERE id=${id}`).then((results: any) => {
