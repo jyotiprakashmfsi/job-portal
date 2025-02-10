@@ -9,10 +9,12 @@ interface job{
     salary: string
 }
 
-export const createJob = (req: Request, res: Response) => {
+export const createJob = async (req: Request, res: Response) => {
     try {
-        const jobs : job = req.body()
-        sequelize.query(`INSERT INTO job (title, description, location, salary) VALUES(${jobs.title} || '' , ${jobs.description} || '', ${jobs.location} || '', ${jobs.salary}) `).then((result: any)=>{
+        console.log("request body:" ,req.body);
+        const jobs : job = req.body
+        console.log(jobs);
+        sequelize.query(`INSERT INTO job (job_id, title, description, location, salary) VALUES(1, ${jobs.title} || '' , ${jobs.description} || '', ${jobs.location} || '', ${jobs.salary}) `).then((result: any)=>{
             res.status(200).json({msg: "Created!"})
         }
         )
@@ -22,7 +24,7 @@ export const createJob = (req: Request, res: Response) => {
     }
 }
 
-export const getJobs = (req: Request, res: Response) => {
+export const getJobs = async (req: Request, res: Response) => {
     try {
         sequelize.query(`SELECT * FROM job`).then((results: any) => {
             res.status(201).json({data: results});
@@ -33,7 +35,7 @@ export const getJobs = (req: Request, res: Response) => {
     }
 }
 
-export const getJob = (req: Request, res: Response) => {
+export const getJob = async (req: Request, res: Response) => {
     try {
         const id = req.params;
         sequelize.query(`SELECT * FROM job WHERE id=${id}`).then((results: any) => {
@@ -47,9 +49,9 @@ export const getJob = (req: Request, res: Response) => {
 
 
 
-export const deleteJob = (req: Request, res: Response) => {
+export const deleteJob = async (req: Request, res: Response) => {
     try {
-        const id = req.body();
+        const id = req.params;
         sequelize.query(`DELETE FROM applicant WHERE id=${id}`).then((results: any) => {
             res.status(201).json({msg: "Deleted!"});
         })

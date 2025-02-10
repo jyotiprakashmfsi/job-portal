@@ -9,7 +9,7 @@ interface applicant{
     job_id: number
 }
 
-export const createApplicant = (req: Request, res: Response) => {
+export const createApplicant = async (req: Request, res: Response) => {
     try {
         const appl : applicant = req.body()
         sequelize.query(`INSERT INTO applicant (applicant_name, email, resume, job_id) VALUES(${appl.name} || '' , ${appl.email} || '', ${appl.resume} || '', ${appl.job_id}) `).then((result: any)=>{
@@ -22,7 +22,7 @@ export const createApplicant = (req: Request, res: Response) => {
     }
 }
 
-export const getApplicants = (req: Request, res: Response) => {
+export const getApplicants = async (req: Request, res: Response) => {
     try {
         sequelize.query(`SELECT * FROM applicant`).then((results: any) => {
             res.status(201).json({data: results});
@@ -33,7 +33,7 @@ export const getApplicants = (req: Request, res: Response) => {
     }
 }
 
-export const getApplicant = (req: Request, res: Response) => {
+export const getApplicant = async (req: Request, res: Response) => {
     try {
         const id = req.params;
         sequelize.query(`SELECT * FROM applicant WHERE id=${id}`).then((results: any) => {
@@ -47,7 +47,7 @@ export const getApplicant = (req: Request, res: Response) => {
 
 
 
-export const deleteApplicant = (req: Request, res: Response) => {
+export const deleteApplicant = async (req: Request, res: Response) => {
     try {
         const id = req.body();
         sequelize.query(`DELETE FROM applicant WHERE id=${id}`).then((results: any) => {
