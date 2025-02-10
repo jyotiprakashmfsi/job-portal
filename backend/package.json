@@ -2,6 +2,7 @@
   "name": "job-portal",
   "version": "1.0.0",
   "description": "manage job",
+  "type": "module",
   "main": "index.ts",
   "scripts": {
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\" ",
