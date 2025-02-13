@@ -1,13 +1,12 @@
 {
-  "name": "job-portal",
+  "name": "school-management",
   "version": "1.0.0",
-  "description": "manage job",
-  "type": "module",
-  "main": "index.ts",
+  "description": "manage school activities",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\" ",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "build": "tsc ",
+    "start": "nodemon src/index.ts"
   },
   "author": "jyoti",
   "license": "ISC",
@@ -27,6 +26,7 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-dist": "^5.18.3",
     "swagger-ui-express": "^5.0.1",
+    "ts-node": "^10.9.2",
     "tsc": "^2.0.4",
     "typescript": "^5.7.3"
   },

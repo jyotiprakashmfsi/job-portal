@@ -6,6 +6,7 @@ job -
     salary
 
 applicant- 
+    applicant_id
     applicant_name
     email
     resume

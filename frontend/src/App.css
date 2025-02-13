@@ -1,8 +1,12 @@
+*{
+  background-color: #f5f5f5;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: #f5f5f5;
 }
 
 .logo {
@@ -38,5 +42,135 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #000000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.form-container {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+button {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+.button-group {
+  margin: 15px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.jobs-list {
+  margin-top: 30px;
+}
+
+.job-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.job-card h3 {
+  margin-top: 0;
+  color: #000000;
+}
+
+.job-card p {
+  margin: 8px 0;
+}
+
+.job-card strong {
+  color: #555;
+}
+
+.application-form {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.application-form h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.applicants-list {
+  margin-top: 30px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.applicant-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.applicant-card h3 {
+  margin-top: 0;
+  color: #0f0f0f;
+}
+
+.applicant-card a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.applicant-card a:hover {
+  text-decoration: underline;
 }

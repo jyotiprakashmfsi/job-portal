@@ -1,13 +1,15 @@
 import { Request, Response } from "express"
-import appRouter from "./src/routes/appRouter"
+import appRouter from "./routes"
 
+const cors = require('cors')
 const express = require('express')
 const app = express()
 const port = 3000
 
-const router= 
+app.use(cors());
+app.use(express.json()); 
 
-app.get('/api', appRouter)
+app.use('/api', appRouter)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
