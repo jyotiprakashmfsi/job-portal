@@ -11,16 +11,22 @@ interface job{
 
 export const createJob = async (req: Request, res: Response) => {
     try {
-        console.log("request body:" ,req.body);
-        const jobs : job = req.body
-        console.log(jobs);
-        sequelize.query(`INSERT INTO job (job_id, title, description, location, salary) VALUES(1, ${jobs.title} || '' , ${jobs.description} || '', ${jobs.location} || '', ${jobs.salary}) `).then((result: any)=>{
-            res.status(200).json({msg: "Created!"})
-        }
-        )
+        const jobs: job = req.body;
+        console.log("Creating job:", jobs);
+        
+        const query = `
+            INSERT INTO job (title, description, location, salary) 
+            VALUES ($1, $2, $3, $4)
+        `;
+        
+        await sequelize.query(query, {
+            bind: [jobs.title, jobs.description, jobs.location, jobs.salary]
+        });
+        
+        res.status(201).json({ msg: "Job created successfully!" });
     } catch (error) {
-        console.log("Error: ", error)
-        res.status(500).json({msg: "Failed to create applicant"});
+        console.log("Error: ", error);
+        res.status(500).json({ msg: "Failed to create job" });
     }
 }
 
@@ -60,6 +66,3 @@ export const deleteJob = async (req: Request, res: Response) => {
         res.status(500).json({msg: "Failed to get applicants"});
     }
 }
-
-
-
