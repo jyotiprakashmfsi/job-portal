@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { createJob, deleteJob, getJob, getJobs } from "../helper/jobManager";
+import { createJob, deleteJob, getJob, getJobs } from "../controller/jobManager";
 const jobRoute= Router()
+
 
 jobRoute.post("/", createJob)
 jobRoute.get("/", getJobs)
